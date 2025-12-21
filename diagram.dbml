@@ -1,0 +1,18 @@
+Table users{
+     id int pk
+     first_name string
+     last_name string
+     username string unique
+     email string unique
+}
+
+Table posts{
+     id int pk
+     title string
+     content string
+     user_id int [ref: > users.id]
+     email string unique
+}
+
+Ref: posts.user_id > users.id // users (1) - posts (many)
+
