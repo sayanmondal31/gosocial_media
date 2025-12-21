@@ -54,3 +54,4 @@ Resources
 -
 
 + https://www.postgresql.org/docs/current/citext.html
++ DB relation: https://www.dataquest.io/blog/sql-joins/

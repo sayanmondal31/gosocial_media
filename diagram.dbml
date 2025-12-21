@@ -16,3 +16,14 @@ Table posts{
 
 Ref: posts.user_id > users.id // users (1) - posts (many)
 
+
+
+Table user_invitation{
+     token int pk
+     user_id int unique [ref: - users.id]
+}
+
+Table followers{
+     user_id int [ref: <> users.id] // M - M
+     follower_id int [ref: <> users.id] // M - M
+}
