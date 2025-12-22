@@ -4,18 +4,20 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"fmt"
 
 	"github.com/lib/pq"
 )
 
 type Post struct {
-	ID        int64    `json:"id"`
-	Content   string   `json:"content"`
-	Title     string   `json:"title"`
-	UserId    int64    `json:"user_id"`
-	Tags      []string `json:"tags"`
-	CreatedAt string   `json:"created_at"`
-	UpdatesAt string   `json:"update_at"`
+	ID        int64     `json:"id"`
+	Content   string    `json:"content"`
+	Title     string    `json:"title"`
+	UserId    int64     `json:"user_id"`
+	Tags      []string  `json:"tags"`
+	CreatedAt string    `json:"created_at"`
+	UpdatesAt string    `json:"update_at"`
+	Comments  []Comment `json:"comments"`
 }
 
 type PostStore struct {
@@ -43,7 +45,9 @@ func (s *PostStore) Create(ctx context.Context, post *Post) error {
 	)
 
 	if err != nil {
+		fmt.Println(err, "err in create post")
 		return err
+
 	}
 
 	return nil
